@@ -1,5 +1,7 @@
 require("menu/menu")
 function love.load()
+  love.mouse.setVisible(false)
+  newCursor = love.graphics.newImage("cur.png")
   menu:toggle()
   view = {}
   view[1] = {
@@ -26,7 +28,7 @@ function love.load()
   }
   view[4] = {
     title="Credits",
-    desc="Josef N Patoprsty - Programmer\nSomeone Else - Artist",
+    desc="Josefnpat - Programmer\nSomeone Else - Artist",
     {t="Return",cb="mm"}
   }
   videomodes = love.graphics.getModes()
@@ -38,6 +40,7 @@ function love.draw()
   if not menu.run then
     love.graphics.print("Press escape to return to the menu!",128,128)
   end
+  love.graphics.draw(newCursor, love.mouse.getX(), love.mouse.getY(),0,.75,.75)
 end
 
 curbg = 0
