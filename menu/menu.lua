@@ -1,8 +1,8 @@
 menu = {}
 
 menu.font_title = love.graphics.newFont("menu/assets/Orbitron Black.ttf",64)
-menu.font_desc = love.graphics.newFont("menu/assets/League_Gothic-webfont.ttf",24)
-menu.font_menu = love.graphics.newFont("menu/assets/League_Gothic-webfont.ttf",32)
+menu.font_desc = love.graphics.newFont("menu/assets/League_Gothic-webfont.ttf",22)
+menu.font_menu = love.graphics.newFont("menu/assets/League_Gothic-webfont.ttf",26)
 menu.icon = love.graphics.newImage("menu/assets/icon.png")
 menu.bg = love.graphics.newImage("menu/assets/bg.png")
 menu.padding = 64

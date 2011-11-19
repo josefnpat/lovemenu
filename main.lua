@@ -40,10 +40,19 @@ function love.draw()
   end
 end
 
+curbg = 0
 function love.keypressed(key)
   menu:keypressed(key)
   if not menu.run and key == "escape" then
     menu:toggle()
+  end
+  if key == "r" then
+    curbg = (curbg + 1)%4
+    if curbg == 0 then
+      menu.bg = love.graphics.newImage("menu/assets/bg.png")
+    else
+      menu.bg = love.graphics.newImage("bg"..curbg..".png")
+    end
   end
 end
 
