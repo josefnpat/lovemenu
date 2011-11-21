@@ -1,13 +1,18 @@
 require("menu/menu")
 function love.load()
-  love.mouse.setVisible(false)
-  newCursor = love.graphics.newImage("cur.png")
+  --love.mouse.setVisible(false)
+  --newCursor = love.graphics.newImage("cur.png")
   menu:toggle()
   view = {}
   view[1] = {
     title="Space Hell",
     desc="Never before has mankind seen such a sexy menu screen. Presenting the lovemenu.",
-    {t="New Game",cb="ng"},
+    {t="Login",cb="ng",
+      form={
+        {title="Username:",type="text",name="un"},
+        {title="Password:",type="password",name="pass"}
+      }
+    },
     {t="Options",cb="op"},
     {t="Credits",cb="cr"},
     {t="Exit",cb="exit"}
@@ -40,7 +45,7 @@ function love.draw()
   if not menu.run then
     love.graphics.print("Press escape to return to the menu!",128,128)
   end
-  love.graphics.draw(newCursor, love.mouse.getX(), love.mouse.getY(),0,.75,.75)
+  --love.graphics.draw(newCursor, love.mouse.getX(), love.mouse.getY(),0,.75,.75)
 end
 
 curbg = 0
