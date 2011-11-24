@@ -7,9 +7,6 @@ function form:load(views)
   form.view = views
   --TODO Put this in an init section so that setstate works.
   form.line_height = form.font:getHeight()
-  form.bounding_h = #form.view[form.state] * (form.line_height + form.padding * 2)
-  form.bounding_x = love.graphics.getWidth()/2 - form.w/2
-  form.bounding_y = love.graphics.getHeight()/2 - form.bounding_h/2
 end
 
 function form:toggle()
@@ -51,7 +48,11 @@ function form:get_bounding(i)
   local ele_y = form.bounding_y + form.line_height * (i-1) - form.padding + i*(form.padding*2) - form.inputpadding
   local ele_w = form.w - form.padding * 2 + form.inputpadding * 2
   local ele_h = form.line_height + form.inputpadding * 2
-  return ele_x,ele_y,ele_w,ele_h
+  local buttondiv = 1
+  if form.view[form.state][i].type == "submit" then
+    buttondiv = 4
+  end
+  return ele_x,ele_y,ele_w/buttondiv,ele_h
 end
 
 function form:draw_element(obj,x,y,w,h,highlight)
@@ -70,13 +71,16 @@ function form:draw_element(obj,x,y,w,h,highlight)
     love.graphics.printf(obj.value,x+form.inputpadding,y+form.inputpadding,w-form.inputpadding*2,"center")
   end
   if obj.type == "submit" then
-    love.graphics.rectangle("fill",x,y,w/4,h)
+    love.graphics.rectangle("fill",x,y,w,h)
     love.graphics.setColor(0,0,0,255)
-    love.graphics.printf(obj.value,x+form.inputpadding,y+form.inputpadding,w/4-form.inputpadding*2,"center")
+    love.graphics.printf(obj.value,x+form.inputpadding,y+form.inputpadding,w-form.inputpadding*2,"center")
   end
 end
 
 function form:update(dt)
+  form.bounding_h = #form.view[form.state] * (form.line_height + form.padding * 2)
+  form.bounding_x = love.graphics.getWidth()/2 - form.w/2
+  form.bounding_y = love.graphics.getHeight()/2 - form.bounding_h/2
   if form.run then
     form.highlight = form:mouse_over_ele()
   end

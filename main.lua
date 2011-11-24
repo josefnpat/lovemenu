@@ -46,9 +46,6 @@ end
 function love.draw()
   menu:draw()
   form:draw()
-  if not menu.run then
-    love.graphics.print("Press escape to return to the menu!",128,128)
-  end
 end
 
 curbg = 0
