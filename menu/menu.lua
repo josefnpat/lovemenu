@@ -75,16 +75,18 @@ end
 
 
 function menu:update(dt)
-  menu.title_fade = menu.title_fade + dt
-  menu.iconpos = menu.option*menu.font_menu:getHeight()+menu.offset+menu.font_menu:getHeight()/2
-  if menu.iconpos > menu.iconcurpos then
-    menu.iconcurpos = menu.iconcurpos + math.abs(menu.iconcurpos-menu.iconpos)/2
-  elseif menu.iconpos < menu.iconcurpos then
-    menu.iconcurpos = menu.iconcurpos - math.abs(menu.iconcurpos-menu.iconpos)/2
-  end
-  local temp_test = menu:determine_mouse_choice(love.mouse.getX(),love.mouse.getY())
-  if temp_test then
-    menu.option = temp_test
+  if menu.run then
+    menu.title_fade = menu.title_fade + dt
+    menu.iconpos = menu.option*menu.font_menu:getHeight()+menu.offset+menu.font_menu:getHeight()/2
+    if menu.iconpos > menu.iconcurpos then
+      menu.iconcurpos = menu.iconcurpos + math.abs(menu.iconcurpos-menu.iconpos)/2
+    elseif menu.iconpos < menu.iconcurpos then
+      menu.iconcurpos = menu.iconcurpos - math.abs(menu.iconcurpos-menu.iconpos)/2
+    end
+    local temp_test = menu:determine_mouse_choice(love.mouse.getX(),love.mouse.getY())
+    if temp_test then
+      menu.option = temp_test
+    end
   end
 end
 
@@ -131,9 +133,11 @@ function menu:determine_mouse_choice(x,y)
 end
 
 function menu:mousepressed(x,y,button)
-  local temp_test = menu:determine_mouse_choice(x,y)
-  if temp_test then
-    menu.option = temp_test
-    menu:callback_exec()
+  if menu.run then
+    local temp_test = menu:determine_mouse_choice(x,y)
+    if temp_test then
+      menu.option = temp_test
+      menu:callback_exec()
+    end
   end
 end
