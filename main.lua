@@ -1,5 +1,4 @@
 require("menu/menu")
-require("form/form")
 function love.load()
   menu:toggle()
   menu_view = {}
@@ -31,30 +30,18 @@ function love.load()
     {t="Return",cb="mm"}
   }
   menu:load(menu_view)
-  form_view = {}
-  form_view[1]={
-    {value="Username",type="title"},
-    {value="<username>",type="text_input",name="login_username"},
-    {value="Password",type="title"},
-    {value="***",type="password_input",name="login_password"},
-    {value="Login",type="submit",cb="login"}
-  }
-  form:load(form_view)
   videomodes = love.graphics.getModes()
   currentmode = 1  
 end
 function love.draw()
   menu:draw()
-  form:draw()
 end
 
 curbg = 0
 function love.keypressed(key,unicode)
   menu:keypressed(key)
-  form:keypressed(key,unicode)
   if not menu.run and key == "escape" then
     menu:toggle()
-    form:toggle()
   end
   if key == "r" then
     curbg = (curbg + 1)%4
@@ -66,20 +53,10 @@ function love.keypressed(key,unicode)
   end
 end
 
-
-function love.keyreleased(key,unicode)
-  form:keyreleased(key,unicode)  
-end
-
-function form:callback(cb,obj)
-  print("data from form:"..cb)
-end
-
 sound = true
 function menu:callback(cb)
   if cb == "ng" then
     menu:toggle()
-    form:toggle()
   elseif cb == "op" then
     menu:setstate(2)
   elseif cb == "cr" then
@@ -112,10 +89,8 @@ end
 
 function love.update(dt)
   menu:update(dt)
-  form:update(dt)
 end
 
 function love.mousepressed(x,y,button)
   menu:mousepressed(x,y,button)
-  form:mousepressed(x,y,button)
 end
