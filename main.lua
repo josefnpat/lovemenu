@@ -1,4 +1,4 @@
-require("menu/menu")
+menu = require("menu/menu")
 function love.load()
   menu:toggle()
   menu_view = {}

@@ -141,3 +141,5 @@ function menu:mousepressed(x,y,button)
     end
   end
 end
+
+return menu
