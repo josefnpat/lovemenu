@@ -70,7 +70,7 @@ function menu:callback(cb)
   elseif cb == "res" then
     love.graphics.setMode( videomodes[currentmode].width, videomodes[currentmode].height )
     menu_view[2][2].t = "Resolution ("..love.graphics.getWidth().."x"..love.graphics.getHeight()..")"
-    currentmode = ((currentmode + 1)% #videomodes)+1
+    currentmode = currentmode % #videomodes + 1
   elseif cb == "sound" then
     sound = not sound
     local temp_x = ""
