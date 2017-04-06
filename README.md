@@ -86,11 +86,6 @@ function menu:callback(cb)
 end
 ```
 6. Last is the keyboard function
-6. Last is the keyboard function
-6. Last is the keyboard function
-6. Last is the keyboard function
-6. Last is the keyboard function
-6. Last is the keyboard function
 ```lua
 function love.keypressed(key)
 	menu:keypressed(key)
