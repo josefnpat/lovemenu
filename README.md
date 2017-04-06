@@ -55,7 +55,67 @@ function love.load()
 end
 ```
 
-4.
+4. After the main menu views setup
+```lua
+menu = require("libraries/menu")
+function love.load()
+	-- GAME VIEWS SETUP ABOVE
+	menu:load(menu_view) 
+	menu.bg = love.graphics.newImage("path-to-image") -- for the bg
+end
+
+function love.update(dt)
+	menu:update(dt)
+end
+
+function love.draw()
+	menu:draw() 
+end
+```
+
+5. Now let us setup a simple callbacks system (cb)
+```lua
+function menu:callback(cb)
+	if cb == "sg" then --the start game callback we used above
+		--code to start the game
+	elseif cb == "st" then --settings
+		menu:setstate(2) --go to the "menu_view[2]"
+	elseif cb == "quit" then --quit
+		menu:setstate(3)
+	end --etc
+end
+```
+6. Last is the keyboard function
+6. Last is the keyboard function
+6. Last is the keyboard function
+6. Last is the keyboard function
+6. Last is the keyboard function
+6. Last is the keyboard function
+```lua
+function love.keypressed(key)
+	menu:keypressed(key)
+end
+```
+
+# And that's it! Hope you got it!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
