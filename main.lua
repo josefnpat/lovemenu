@@ -30,7 +30,7 @@ function love.load()
     {t="Return",cb="mm"}
   }
   menu:load(menu_view)
-  videomodes = love.graphics.getModes()
+  videomodes = love.window.getFullscreenModes()
   currentmode = 1  
 end
 function love.draw()
@@ -64,7 +64,7 @@ function menu:callback(cb)
   elseif cb == "exit" then
     menu:setstate(3)
   elseif cb == "cexit" then
-    love.event.push("q")
+    love.event.push("quit")
   elseif cb == "fs" then
     love.graphics.toggleFullscreen( )
   elseif cb == "res" then
