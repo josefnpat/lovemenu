@@ -3,7 +3,7 @@ function love.load()
   menu:toggle()
   menu_view = {}
   menu_view[1] = {
-    title="Space Hell",
+		--code to start the game    title="Space Hell",
     desc="Never before has mankind seen such a sexy menu screen. Presenting the lovemenu.",
     {t="Login",cb="ng"},
     {t="Options",cb="op"},
