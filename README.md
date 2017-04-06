@@ -92,27 +92,29 @@ function love.keypressed(key)
 end
 ```
 
+# Additional configurations
+If you want to change the font for the title, desc, and menu. Do
+```lua
+menu = require("libraries/menu")
+
+function love.load()
+	--before setting up the views:
+	menu.font_title = love.graphics.newFont("path-to-font.ttf, 64) --default is Orbitron with size of 64
+	menu.font_desc = love.graphics.newFont("path-to-font.ttf, 22) --default is League_Gothic-webfont with size of 22
+	menu.font_menu = love.graphics.newFont("path-to-font.ttf, 26) --default is same as the font_desc but size is 16
+end
+```
+
+If you want to change the icon font:
+```lua
+menu.icon = love.graphics.newImage("path-to-image.png")
+
+```
+
+
+
+
 # And that's it! Hope you got it!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
